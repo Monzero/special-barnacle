@@ -1,0 +1,32 @@
+```json
+[
+  {
+    "target_table": "TAGRET01",
+    "target_field": "CUSTOMER_ID",
+    "source_table": "ECOM001_CUSTOMERS",
+    "source_field": "CUSTOMER_ID",
+    "transformation": "Direct mapping"
+  },
+  {
+    "target_table": "TAGRET01",
+    "target_field": "UNIT_PRICE_ABOVE_100",
+    "source_table": ["ECOM005_PRODUCTS"],
+    "source_field": ["UNIT_PRICE"],
+    "transformation": "CASE WHEN UNIT_PRICE > 100 THEN UNIT_PRICE - 100 ELSE 0 END"
+  },
+  {
+    "target_table": "TAGRET01",
+    "target_field": "ORDER_DATE_YR",
+    "source_table": "ECOM007_ORDERS",
+    "source_field": "ORDER_DATE",
+    "transformation": "CAST(SUBSTRING(ORDER_DATE, 1, 4) AS BIGINT)"
+  },
+  {
+    "target_table": "TAGRET01",
+    "target_field": "IS_STATUS_DELETED",
+    "source_table": "ECOM001_CUSTOMERS",
+    "source_field": "STATUS",
+    "transformation": "CASE WHEN STATUS IN ('I', 'D') THEN TRUE ELSE FALSE END"
+  }
+]
+```

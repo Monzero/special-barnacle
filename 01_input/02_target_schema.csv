@@ -1,0 +1,5 @@
+Table Name;Column Name;Data Type;Description;Sample Value
+TAGRET01;CUSTOMER_ID;BIGINT;Unique customer identifier - Primary Key;1001
+TAGRET01;UNIT_PRICE_ABOVE_100;DECIMAL(9,2);How much of the product unit price is above 100 i.e product price minus 100;2499.99
+TAGRET01;ORDER_DATE_YR;BIGINT;Year in which the order was placed;2024
+TAGRET01;IS_STATUS_DELETED;BULLION;TRUE if Customer status is ( I=Inactive or  D=Deleted);TRUE

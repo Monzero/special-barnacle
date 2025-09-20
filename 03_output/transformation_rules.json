@@ -1,15 +1,15 @@
 ```json
 {
-  "target_table": "Claim_Data",
-  "target_field": "Claim_Total_Billed_Amount",
+  "target_table": "Claims",
+  "target_field": "Claim Total Billed Amount",
   "source_table": ["IADS006_PROCS", "IADS003_FINAN", "IADS004_REV", "IADS001_BILL_LINE"],
-  "source_field": ["ADJST-AMT", "LT-MED-ADJ-AMT", "GROSS-PAY", "OI_PAID_AMT"],
-  "transformation": "Calculate the sum of ADJST-AMT, LT-MED-ADJ-AMT, GROSS-PAY, and OI_PAID_AMT to derive the total billed amount for the claim."
+  "source_field": ["ADJST-AMT", "CHECK-AMT", "LT-MED-ADJ-AMT", "GROSS-PAY", "OI_PAID_AMT"],
+  "transformation": "Calculate the sum of ADJST-AMT, CHECK-AMT, LT-MED-ADJ-AMT, GROSS-PAY, and OI_PAID_AMT to derive the total billed amount for the claim."
 }
 ```
 {
-  "target_table": "Claim",
-  "target_field": "Total_Patient_Liability_Amount",
+  "target_table": "Claims",
+  "target_field": "Claim_Total_Patient_Liability_Amount",
   "source_table": ["IADS001_BILL_LINE", "IADS006_PROCS"],
   "source_field": ["PAT_LIAB", "ADJST-AMT"],
   "transformation": "Calculate the sum of PAT_LIAB from table IADS001_BILL_LINE and ADJST-AMT from table IADS006_PROCS to derive the total patient liability amount for a claim."

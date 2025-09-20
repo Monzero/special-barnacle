@@ -1,0 +1,4 @@
+1. Remove all source fiels which are not to be used. Currently rule based removal is applied. Check if that is sufficient.
+2. Data quality: can we explain missing values, jargons, how table or column names are made. I.e General information about schema.
+3. Assess quality of retrival
+4. Assess chunking strategy (we could trim out or add information which is useful for matching)

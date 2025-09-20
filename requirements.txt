@@ -1,3 +1,6 @@
 pandas
 openai 
 python-dotenv
+scipy
+openpyxl
+rank_bm25

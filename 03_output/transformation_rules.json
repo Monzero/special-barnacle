@@ -1,76 +1,25 @@
-{
-  "target_table": "Claims",
-  "target_field": "Claim Total Billed Amount",
-  "source_table": ["IADS006_PROCS", "IADS003_FINAN", "IADS004_REV", "IADS001_BILL_LINE"],
-  "source_field": ["ADJST-AMT", "LT-MED-ADJ-AMT", "GROSS-PAY", "OI_PAID_AMT"],
-  "transformation": "Calculate the sum of ADJST-AMT, LT-MED-ADJ-AMT, GROSS-PAY, and OI_PAID_AMT fields to derive the total billed amount for a claim. Perform any necessary data type conversions to ensure consistency."
-}
+```json
 {
   "target_table": "Claim_Data",
-  "target_field": "Claim Total Patient Liability Amount",
+  "target_field": "Claim_Total_Billed_Amount",
+  "source_table": ["IADS006_PROCS", "IADS003_FINAN", "IADS004_REV", "IADS001_BILL_LINE"],
+  "source_field": ["ADJST-AMT", "LT-MED-ADJ-AMT", "GROSS-PAY", "OI_PAID_AMT"],
+  "transformation": "Calculate the sum of ADJST-AMT, LT-MED-ADJ-AMT, GROSS-PAY, and OI_PAID_AMT to derive the total billed amount for the claim."
+}
+```
+{
+  "target_table": "Claim",
+  "target_field": "Total_Patient_Liability_Amount",
   "source_table": ["IADS001_BILL_LINE", "IADS006_PROCS"],
   "source_field": ["PAT_LIAB", "ADJST-AMT"],
-  "transformation": "Combine the 'PAT_LIAB' field from 'IADS001_BILL_LINE' table and 'ADJST-AMT' field from 'IADS006_PROCS' table to calculate the total patient liability amount. Perform any necessary data type conversions to ensure consistency."
+  "transformation": "Calculate the sum of PAT_LIAB from table IADS001_BILL_LINE and ADJST-AMT from table IADS006_PROCS to derive the total patient liability amount for a claim."
 }
+```json
 {
-  "target_table": "Claims",
-  "target_field": "Claim Total Patient CoPay Amount",
+  "target_table": "Claim",
+  "target_field": "TotalPatientCoPayAmount",
   "source_table": ["IADS001_BILL_LINE", "IADS006_PROCS"],
   "source_field": ["PAT_LIAB", "ADJST-AMT"],
-  "transformation": "Calculate the sum of 'PAT_LIAB' from 'IADS001_BILL_LINE' and 'ADJST-AMT' from 'IADS006_PROCS' to derive the total patient copay amount for a claim."
-}
-```json
-{
-  "target_table": "Claim_Data",
-  "target_field": "Claim Total Allowed Amount",
-  "source_table": ["IADS003_FINAN", "IADS001_BILL_LINE"],
-  "source_field": ["BASE-EOB-PMT-ALLOW", "BASE-EOB-PRET-PD"],
-  "transformation": "Combine 'BASE-EOB-PMT-ALLOW' from 'IADS003_FINAN' and 'BASE-EOB-PRET-PD' from 'IADS001_BILL_LINE' to calculate the total allowed amount for a claim"
+  "transformation": "Calculate the sum of PAT_LIAB from table IADS001_BILL_LINE and ADJST-AMT from table IADS006_PROCS to derive the total patient copay amount for a claim."
 }
 ```
-{
-  "target_table": "Claims",
-  "target_field": "Claim Total COB Amount",
-  "source_table": ["IADS002_CLAIM"],
-  "source_field": ["COB-CD"],
-  "transformation": "Sum up the total COB amount for each claim by aggregating the values in the 'COB-CD' field. Perform any necessary data type conversion to ensure the final result is in the appropriate format."
-}
-```json
-{
-  "target_table": "Claim_Data",
-  "target_field": "Claim Total Coinsurance Amount",
-  "source_table": ["IADS003_FINAN"],
-  "source_field": ["COINS-AMT"],
-  "transformation": "Map 'COINS-AMT' from 'IADS003_FINAN' to 'Claim Total Coinsurance Amount' field in 'Claim_Data' table"
-}
-```
-{
-  "target_table": "Claims",
-  "target_field": "Claim Total Deductible Amount",
-  "source_table": ["IADS003_FINAN"],
-  "source_field": ["INDV-DED-ACCUM-AMT1", "INDV-DED-ACCUM-AMT2", "FAM-DED-ACCUM-AMT1", "FAM-DED-ACCUM-AMT2"],
-  "transformation": "Calculate the sum of INDV-DED-ACCUM-AMT1, INDV-DED-ACCUM-AMT2, FAM-DED-ACCUM-AMT1, and FAM-DED-ACCUM-AMT2 fields to derive the total deductible amount for the claim."
-}
-```json
-{
-  "target_table": "Claims",
-  "target_field": "Claim Total NonCovered Amount",
-  "source_table": ["IADS006_PROCS", "IADS003_FINAN", "IADS004_REV", "IADS001_BILL_LINE"],
-  "source_field": ["ADJST-AMT", "LT-MED-ADJ-AMT", "GROSS-PAY", "OI_PAID_AMT"],
-  "transformation": "Calculate the sum of 'ADJST-AMT' from 'IADS006_PROCS', 'LT-MED-ADJ-AMT' from 'IADS003_FINAN', 'GROSS-PAY' from 'IADS004_REV', and 'OI_PAID_AMT' from 'IADS001_BILL_LINE' to derive the total non-covered amount for a claim."
-}
-```
-{
-  "target_table": "Claims",
-  "target_field": "Claim Total Covered Amount",
-  "source_table": ["IADS004_REV", "IADS006_PROCS", "IADS003_FINAN", "IADS001_BILL_LINE"],
-  "source_field": ["GROSS-PAY", "ADJST-AMT", "LT-MED-ADJ-AMT", "MM_PAID"],
-  "transformation": "Calculate the sum of GROSS-PAY, ADJST-AMT, LT-MED-ADJ-AMT, and MM_PAID fields to derive the total covered amount for a claim."
-}
-{
-  "target_table": "Claims",
-  "target_field": "Claim Total Tax Amount",
-  "source_table": ["IADS006_PROCS", "IADS003_FINAN", "IADS004_REV", "IADS001_BILL_LINE"],
-  "source_field": ["ADJST-AMT", "LT-MED-ADJ-AMT", "GROSS-PAY", "OI_PAID_AMT"],
-  "transformation": "Calculate the sum of ADJST-AMT, LT-MED-ADJ-AMT, GROSS-PAY, and OI_PAID_AMT fields to derive the total tax amount for a claim. Perform necessary type conversions to ensure data consistency."
-}
